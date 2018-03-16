@@ -41,56 +41,56 @@ Will return array of populated AR models
 $importer = new \Gevman\Yii2Excel\Importer([
     'filePath' => '@webroot/1521226822.xlsx',
     'activeRecord' => Product::class,
-    'scenario' => Product::SCENARIO_NEW, //default: no scenario will be set
-    'skipFirstRow' => true, //default: false
+    'scenario' => Product::SCENARIO_IMPORT,
+    'skipFirstRow' => true,
     'fields' => [
         [
             'attribute' => 'keywords',
-            'value' => 1
+            'value' => 1,
         ],
         [
             'attribute' => 'itemTitle',
-            'value' => 2
+            'value' => 2,
         ],
         [
             'attribute' => 'marketplaceTitle',
-            'value' => 3
+            'value' => 3,
         ],
         [
             'attribute' => 'brand',
             'value' => function ($row) {
                 return strval($row[4]);
-            }
+            },
         ],
         [
             'attribute' => 'category',
             'value' => function ($row) {
                 return strval($row[4]);
-            }
+            },
         ],
         [
             'attribute' => 'mpn',
             'value' => function ($row) {
                 return strval($row[6]);
-            }
+            },
         ],
         [
             'attribute' => 'ean',
             'value' => function ($row) {
                 return strval($row[7]);
-            }
+            },
         ],
         [
             'attribute' => 'targetPrice',
-            'value' => 8
+            'value' => 8,
         ],
         [
             'attribute' => 'photos',
-            'value' => 11
+            'value' => 11,
         ],
         [
             'attribute' => 'currency',
-            'value' => 13
+            'value' => 13,
         ],
     ],
 ]);
