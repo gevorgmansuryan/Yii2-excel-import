@@ -1,5 +1,5 @@
 {
-    "name": "gevman/yii2-excel-export",
+    "name": "gevman/yii2-excel-import",
     "description": "Export excel sheets to ActiveRecord models",
     "type": "package",
     "license": "MIT",

@@ -1,10 +1,10 @@
 # Yii2 Excel Importer
-Export excel to ActiveRecord models
+Import excel to ActiveRecord models
 
 ## installation
 using composer
 ```bash
-composer require gevman/yii2-excel-export
+composer require gevman/yii2-excel-Import
 ```
 
 ## methods
