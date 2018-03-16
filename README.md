@@ -4,7 +4,7 @@ Import excel to ActiveRecord models
 ## installation
 using composer
 ```bash
-composer require gevman/yii2-excel-Import
+composer require gevman/yii2-excel-import
 ```
 
 ## methods
