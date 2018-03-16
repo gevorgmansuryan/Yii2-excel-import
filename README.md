@@ -38,7 +38,7 @@ Will return array of populated AR models
 - Define Fields
 
 ```php
-uploadedFile = \yii\web\UploadedFile::getInstanceByName('file');
+$uploadedFile = \yii\web\UploadedFile::getInstanceByName('file');
 
 $importer = new \Gevman\Yii2Excel\Importer([
     'filePath' => $uploadedFile->tempName,
