@@ -1,0 +1,21 @@
+{
+    "name": "gevman/yii2-excel-export",
+    "description": "Export excel sheets to ActiveRecord models",
+    "type": "package",
+    "license": "MIT",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.2",
+        "yiisoft/yii2": "~2.0.14"
+    },
+    "authors": [
+        {
+            "name": "Gevorg Mansuryan",
+            "email": "gevorgmansuryan@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Gevman\\Yii2Excel\\": "src/"
+        }
+    }
+}
