@@ -1,14 +1,14 @@
 # Yii2 Excel Importer
 Export excel to ActiveRecord models
 
-##installation
+## installation
 using composer
 ```bash
 composer require gevman/yii2-excel-export
 ```
 
-##methods
-####__constructor
+## methods
+#### __constructor
 supports array parameter with following attributes
 - `filePath` - full path to excel file to be imported
 - `activeRecord` - ActiveRecord class name where imported data should be saved
@@ -16,24 +16,24 @@ supports array parameter with following attributes
 - `skipFirstRow` - if true will skip excel's first row (eg. heading row), otherwise will try save first row also
 - `fields[]` - array of field definitions
 
-#####fields[]
+##### fields[]
 - `attribute` - attribute name from Your ActieRecord class
 - `value` - if callable passed it will receive current row, and return value will be save to AR, otherwise it will find element which key is passed value in current row
 
-####validate
+#### validate
 validates each populated AR model, and returns false if there's any error, otherwise it will return tru
 
-####save
+#### save
 Saves populated AR models, and returns an array of each saved AR model's primary key
 if models is not validated yet, it will validate all models before save 
 
-####getErrors
+#### getErrors
 Will return array of AR model errors indexed by row's index
 
-####getModels
+#### getModels
 Will return array of populated AR models
 
-##examples
+## examples
 
 - Define Fields
 
