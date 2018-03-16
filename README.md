@@ -18,10 +18,10 @@ supports array parameter with following attributes
 
 ##### fields[]
 - `attribute` - attribute name from Your ActieRecord class
-- `value` - if callable passed it will receive current row, and return value will be save to AR, otherwise it will find element which key is passed value in current row
+- `value` - if callable passed it will receive current row, and return value will be saved to AR, otherwise it will find element which key is passed value in current row
 
 #### validate
-validates each populated AR model, and returns false if there's any error, otherwise it will return tru
+validates each populated AR model, and returns false if there's any error, otherwise it will return true
 
 #### save
 Saves populated AR models, and returns an array of each saved AR model's primary key
@@ -38,8 +38,10 @@ Will return array of populated AR models
 - Define Fields
 
 ```php
+uploadedFile = \yii\web\UploadedFile::getInstanceByName('file');
+
 $importer = new \Gevman\Yii2Excel\Importer([
-    'filePath' => '@webroot/1521226822.xlsx',
+    'filePath' => $uploadedFile->tempName,
     'activeRecord' => Product::class,
     'scenario' => Product::SCENARIO_IMPORT,
     'skipFirstRow' => true,
@@ -86,7 +88,23 @@ $importer = new \Gevman\Yii2Excel\Importer([
         ],
         [
             'attribute' => 'photos',
-            'value' => 11,
+            'value' => function ($row) {
+                $photos = [];
+                foreach (StringHelper::explode(strval($row[11]), ',', true, true) as $photo) {
+                    if (filter_var($photo, FILTER_VALIDATE_URL)) {
+                        $file = @file_get_contents($photo);
+                        if ($file) {
+                            $filename = md5($file) . '.jpg';
+                            file_put_contents(Yii::getAlias("@webroot/gallery/$filename"), $file);
+                            $photos[] = $filename;
+                        }
+                    } else {
+                        $photos[] = $photo;
+                    }
+                }
+
+                return implode(',', $photos);
+            }
         ],
         [
             'attribute' => 'currency',
